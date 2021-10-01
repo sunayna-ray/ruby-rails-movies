@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
         @movies = Movie.where(rating: @ratings)
       end
     
-      session[:ratings] = params[:ratings] if params[:ratings] || params[:commit] == 'Refresh'
+      session[:ratings] = params[:ratings] if params[:ratings] && params[:commit] == 'Refresh'
       session[:sort] = params[:sort] if params[:sort]
       if (!params[:sort] && !params[:ratings]) && (session[:sort] && session[:ratings])
         flash.keep
